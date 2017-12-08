@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="imports/http-20070405.jar"/>
 	<classpathentry kind="lib" path="imports/MathModule.jar"/>
+	<classpathentry kind="lib" path="imports/sqlite-jdbc-3.21.0.jar"/>
+	<classpathentry kind="lib" path="imports/json-20171018.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

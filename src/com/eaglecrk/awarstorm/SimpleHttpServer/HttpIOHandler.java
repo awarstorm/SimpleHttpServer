@@ -12,14 +12,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 
 public class HttpIOHandler {
 
-	public static void JsonResponse(HttpExchange t) throws IOException
+	public static void JsonResponse(HttpExchange t, String responseJson) throws IOException
 	{
-		
+		t.getResponseHeaders().set("Content-Type","application/json; charset=utf-8");
+        t.sendResponseHeaders(200, responseJson.length());
+        OutputStream os = t.getResponseBody();
+        os.write(responseJson.getBytes());
+        os.close();		
 	}
 	public static void SimpleTextResponse(HttpExchange t, String responseText) throws IOException
 	{
@@ -80,6 +85,7 @@ public class HttpIOHandler {
 			//close input stream
 		    in.close();
 		}
+		System.out.println(qry);
 		// parse the query
 		Map<String,List<String>> parms = new HashMap<String,List<String>>();
 		//split query string on & to get individual keys
